@@ -37,8 +37,8 @@ const assert = (condition: boolean, message: string) => {
   }
 }
 
-const isHTTPSURL = (value: unknown): boolean => {
-  if (typeof value !== "string") {
+const isHTTPSURL = (value: string | undefined): boolean => {
+  if (!value) {
     return false
   }
   try {
@@ -52,6 +52,8 @@ type Evidence = {
   sourceDigest: string
   checks: Record<string, { passed: boolean; receipt: string }>
 }
+// This standalone CLI parses untrusted JSON at its file boundary without a runtime dependency.
+/* oxlint-disable anti-slop/no-runtime-typeof */
 const readEvidence = async (filename: string): Promise<Evidence> => {
   const value: unknown = await Bun.file(filename).json()
   if (
@@ -80,8 +82,9 @@ const readEvidence = async (filename: string): Promise<Evidence> => {
     }
     checks[name] = { passed: check.passed, receipt: check.receipt }
   }
-  return { sourceDigest: value.sourceDigest, checks }
+  return { checks, sourceDigest: value.sourceDigest }
 }
+/* oxlint-enable anti-slop/no-runtime-typeof */
 type OpenAI = (typeof manifest.extensions)["com.openai"]
 const listing: OpenAI["interface"] & {
   supportURL?: string
