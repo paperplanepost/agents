@@ -17,5 +17,9 @@
       "type": "streamable-http",
       "url": "https://api.paperplanepost.com/v1/mcp"
     }
-  ]
+  ],
+  "repository": {
+    "url": "https://github.com/paperplanepost/agents",
+    "source": "github"
+  }
 }
