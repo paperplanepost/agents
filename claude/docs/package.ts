@@ -42,6 +42,7 @@ const files = [
   ...(await Promise.all(
     [
       "README.md",
+      "LICENSE",
       "skills/start-postcard/SKILL.md",
       "skills/start-postcard/scripts/start_postcard.py",
     ].map(async (filename) => ({

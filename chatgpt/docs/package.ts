@@ -8,7 +8,7 @@ import manifest from "../plugin.json"
 
 const pluginRoot = path.resolve(import.meta.dir, "..")
 const root = process.cwd()
-const files = ["plugin.json", "mcp.json", "assets/icon.png"]
+const files = ["plugin.json", "mcp.json", "assets/icon.png", "LICENSE"]
 const requiredChecks = [
   "positive-1",
   "positive-2",
