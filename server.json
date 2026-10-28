@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.paperplanepost/office",
+  "description": "Turn a photo into a real printed postcard, mailed anywhere. Returns a link to finish and pay.",
+  "title": "Paper Plane Post",
+  "version": "1.0.0",
+  "websiteUrl": "https://paperplanepost.com/for/agents",
+  "icons": [
+    {
+      "src": "https://paperplanepost.com/icon.png",
+      "mimeType": "image/png",
+      "sizes": ["270x270"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.paperplanepost.com/v1/mcp"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "paper-plane-post": {
+      "type": "http",
+      "url": "https://api.paperplanepost.com/v1/mcp"
+    }
+  }
+}

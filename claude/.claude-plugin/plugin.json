@@ -1,0 +1,13 @@
+{
+  "name": "paper-plane-post",
+  "displayName": "Paper Plane Post",
+  "version": "1.0.0",
+  "description": "Turn a photo into a printed postcard. Review, finish, and pay on Paper Plane Post.",
+  "author": {
+    "name": "Paper Plane Post, Inc.",
+    "url": "https://paperplanepost.com"
+  },
+  "homepage": "https://paperplanepost.com",
+  "license": "MIT",
+  "keywords": ["postcard", "photo", "mail"]
+}

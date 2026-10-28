@@ -1,0 +1,94 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "paper-plane-post",
+  "version": "1.0.0",
+  "description": "Turn a photo into a printed postcard. Review, finish, and pay on Paper Plane Post.",
+  "author": {
+    "name": "Paper Plane Post, Inc.",
+    "url": "https://paperplanepost.com"
+  },
+  "homepage": "https://paperplanepost.com",
+  "keywords": ["postcard", "photo", "mail"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Paper Plane Post",
+        "shortDescription": "Turn photos into postcards",
+        "longDescription": "Start a printed postcard from a photo you upload, an image you generate, or a public image URL. Include a note and the recipient's mailing address if you have them, or finish those details on the website. Open the returned link to review the photo, choose an optional illustrated version, and pay for printing and mailing. No Paper Plane Post account is required. Creating the link does not charge you or mail anything. Links expire after seven days.",
+        "developerName": "Paper Plane Post, Inc.",
+        "category": "Lifestyle",
+        "capabilities": ["Start a postcard"],
+        "websiteURL": "https://paperplanepost.com",
+        "supportURL": "https://paperplanepost.com/support",
+        "privacyPolicyURL": "https://paperplanepost.com/privacy",
+        "termsOfServiceURL": "https://paperplanepost.com/terms",
+        "defaultPrompt": [
+          "Turn this photo into a postcard.",
+          "Make a postcard from the image we generated.",
+          "Start a postcard with this photo and note."
+        ],
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "commerce": true,
+        "commerce_description": "Paper Plane Post sells physical printed postcards with postage. The tool creates an unpaid draft link. The person reviews the card, completes the note and mailing address, optionally chooses an illustrated front, and pays through the existing website checkout. The tool never collects payment details, charges money, or mails a postcard.",
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Uploaded photo without a note or address",
+              "prompt": "Turn the attached photo into a postcard. I will add the note and address on the website.",
+              "tools_triggered": "start_postcard",
+              "expected_behavior": "Transfer the attached image and call start_postcard without requiring a note or recipient. Return a working link that opens the website with the supplied photo selected. Do not claim it has been paid for or mailed."
+            },
+            {
+              "description": "Uploaded photo with a supplied note",
+              "prompt": "Make a postcard from the attached photo. Put 'Wish you were here!' on the back. I will add the address later.",
+              "tools_triggered": "start_postcard",
+              "expected_behavior": "Create the link without asking for an address. The website shows the attached image and the exact supplied note."
+            },
+            {
+              "description": "Partial recipient details",
+              "prompt": "Use the attached photo for a postcard to Alex in Seattle, US. I will fill in the rest of the address on the website.",
+              "tools_triggered": "start_postcard",
+              "expected_behavior": "Send only the supplied recipient fields, with country US. Do not invent a street address or block on the missing fields. The website preserves the image and supplied fields."
+            },
+            {
+              "description": "Generated image and supplied postcard content",
+              "prompt": "Generate a watercolor mountain landscape, then make a postcard from that image. Add 'Thinking of you!' for Alex at 123 Example Street, Seattle, WA 98101, US. This is sample data; do not pay or mail anything.",
+              "tools_triggered": "start_postcard",
+              "expected_behavior": "After generating the image, transfer the actual generated file to start_postcard. Return the link. Opening it shows that image, the exact note, and the supplied sample address. No purchase or mailing occurs."
+            },
+            {
+              "description": "Public HTTPS image URL",
+              "prompt": "Make a postcard from https://paperplanepost.com/icon.png. I will finish the note and address on the website.",
+              "tools_triggered": "start_postcard",
+              "expected_behavior": "Use the public HTTPS image URL and create a working handoff without sign-in or requiring a note or address. Opening the link shows the supplied image."
+            }
+          ],
+          "negative": [
+            {
+              "description": "No image is available",
+              "prompt": "Make a postcard for me, but I have not supplied an image and do not want one generated.",
+              "expected_behavior": "Ask for a photo or public image URL. Do not call start_postcard or invent image data."
+            },
+            {
+              "description": "Automatic payment and mailing",
+              "prompt": "Charge my saved credit card and mail this postcard immediately without opening the website.",
+              "expected_behavior": "Explain that payment and mailing require review and checkout on the website. Do not ask for payment credentials, claim a charge, or claim the postcard was mailed."
+            },
+            {
+              "description": "Unsupported order lookup",
+              "prompt": "Look up the delivery status of every postcard I have ordered.",
+              "expected_behavior": "Explain that this plugin starts postcards and cannot retrieve order history or delivery status. Do not call start_postcard or invent order information."
+            }
+          ]
+        },
+        "demo_recording_url": "https://paperplanepost.com/chatgpt-plugin-walkthrough.mp4"
+      },
+      "publication": {
+        "release_notes": "Initial release with account-free photo handoffs, optional notes and recipient details, and website review and checkout."
+      }
+    }
+  }
+}
