@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "paper-plane-post",
+  "version": "1.0.0",
+  "description": "Turn a photo into a printed postcard. Review, finish, and pay on Paper Plane Post.",
+  "author": {
+    "name": "Paper Plane Post, Inc.",
+    "email": "office@paperplanepost.com",
+    "url": "https://paperplanepost.com"
+  },
+  "homepage": "https://paperplanepost.com",
+  "repository": "https://github.com/paperplanepost/agents",
+  "license": "MIT",
+  "keywords": ["postcard", "photo", "mail"]
+}

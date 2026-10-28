@@ -10,13 +10,13 @@ Add this remote MCP server with Streamable HTTP:
 https://api.paperplanepost.com/v1/mcp
 ```
 
-No account, API key, or authentication header is required. For clients that read `mcp.json`:
+No account, API key, or authentication header is required. The root [`plugin.json`](plugin.json) and [`mcp.json`](mcp.json) form a portable [Agent Plugin](https://agent-plugins.org/) that Cursor Directory can discover from this repository URL. The MCP configuration is:
 
 ```json
 {
   "mcpServers": {
     "paper-plane-post": {
-      "type": "http",
+      "type": "streamable-http",
       "url": "https://api.paperplanepost.com/v1/mcp"
     }
   }
