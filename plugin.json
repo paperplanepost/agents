@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "paper-plane-post",
   "version": "1.0.0",
-  "description": "Turn a photo into a printed postcard. Review, finish, and pay on Paper Plane Post.",
+  "description": "Create and send an AI-illustrated postcard anywhere in the world",
   "author": {
     "name": "Paper Plane Post, Inc.",
     "email": "office@paperplanepost.com",

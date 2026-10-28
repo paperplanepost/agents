@@ -1,6 +1,8 @@
 # Paper Plane Post for agents
 
-Turn a photo into a real printed postcard. Start an unpaid draft from your assistant, then open the returned link to review the photo, finish the note and address, and pay for printing and mailing on [Paper Plane Post](https://paperplanepost.com).
+Create and send an AI-illustrated postcard anywhere in the world.
+
+Start an unpaid draft from your assistant, then open the returned link to review the photo, finish the note and address, and pay for printing and mailing on [Paper Plane Post](https://paperplanepost.com).
 
 ## Connect
 

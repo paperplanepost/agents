@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "paper-plane-post",
   "version": "1.0.0",
-  "description": "Turn a photo into a printed postcard. Review, finish, and pay on Paper Plane Post.",
+  "description": "Create and send an AI-illustrated postcard anywhere in the world",
   "author": {
     "name": "Paper Plane Post, Inc.",
     "url": "https://paperplanepost.com"
@@ -13,8 +13,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Paper Plane Post",
-        "shortDescription": "Turn photos into postcards",
-        "longDescription": "Start a printed postcard from a photo you upload, an image you generate, or a public image URL. Include a note and the recipient's mailing address if you have them, or finish those details on the website. Open the returned link to review the photo, choose an optional illustrated version, and pay for printing and mailing. No Paper Plane Post account is required. Creating the link does not charge you or mail anything. Links expire after seven days.",
+        "shortDescription": "AI-illustrated postcards",
+        "longDescription": "Create and send an AI-illustrated postcard anywhere in the world. Use a photo you upload, an image you generate, or a public image URL. Include a note and the recipient's mailing address if you have them, or finish those details on the website. Open the returned link to review the photo, choose an optional illustrated version, and pay for printing and mailing. No Paper Plane Post account is required. Creating the link does not charge you or mail anything. Links expire after seven days.",
         "developerName": "Paper Plane Post, Inc.",
         "category": "Lifestyle",
         "capabilities": ["Start a postcard"],
