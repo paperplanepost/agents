@@ -14,9 +14,9 @@
       "interface": {
         "displayName": "Paper Plane Post",
         "shortDescription": "AI-illustrated postcards",
-        "longDescription": "Create and send an AI-illustrated postcard anywhere in the world. Use a photo you upload, an image you generate, or a public image URL. Include a note and the recipient's mailing address if you have them, or finish those details on the website. Open the returned link to review the photo, choose an optional illustrated version, and pay for printing and mailing. No Paper Plane Post account is required. Creating the link does not charge you or mail anything. Links expire after seven days.",
+        "longDescription": "Create and send an AI-illustrated postcard anywhere in the world. Send a little piece of your trip, a favorite photo, or a scene you dreamed up in ChatGPT to someone’s mailbox. Keep the original image or give it an illustrated look, then add a note in your own words. Start a draft here and finish it on Paper Plane Post. We’ll print, stamp, and mail it after you review and pay. No account needed. Draft links are good for seven days.",
         "developerName": "Paper Plane Post, Inc.",
-        "category": "Lifestyle",
+        "category": "Creativity",
         "capabilities": ["Start a postcard"],
         "websiteURL": "https://paperplanepost.com",
         "supportURL": "https://paperplanepost.com/support",
@@ -38,18 +38,21 @@
             {
               "description": "Uploaded photo without a note or address",
               "prompt": "Turn the attached photo into a postcard. I will add the note and address on the website.",
+              "file_attachment_urls": ["https://paperplanepost.com/story/vacation.jpg"],
               "tools_triggered": "start_postcard",
               "expected_behavior": "Transfer the attached image and call start_postcard without requiring a note or recipient. Return a working link that opens the website with the supplied photo selected. Do not claim it has been paid for or mailed."
             },
             {
               "description": "Uploaded photo with a supplied note",
               "prompt": "Make a postcard from the attached photo. Put 'Wish you were here!' on the back. I will add the address later.",
+              "file_attachment_urls": ["https://paperplanepost.com/story/vacation.jpg"],
               "tools_triggered": "start_postcard",
               "expected_behavior": "Create the link without asking for an address. The website shows the attached image and the exact supplied note."
             },
             {
               "description": "Partial recipient details",
               "prompt": "Use the attached photo for a postcard to Alex in Seattle, US. I will fill in the rest of the address on the website.",
+              "file_attachment_urls": ["https://paperplanepost.com/story/vacation.jpg"],
               "tools_triggered": "start_postcard",
               "expected_behavior": "Send only the supplied recipient fields, with country US. Do not invent a street address or block on the missing fields. The website preserves the image and supplied fields."
             },
