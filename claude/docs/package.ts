@@ -41,8 +41,10 @@ const files = [
   { bytes: Buffer.from(`${JSON.stringify(mcp, null, 2)}\n`), filename: ".mcp.json" },
   ...(await Promise.all(
     [
+      ".claude-plugin/icon.png",
       "README.md",
       "LICENSE",
+      "commands/postcard.md",
       "skills/start-postcard/SKILL.md",
       "skills/start-postcard/scripts/start_postcard.py",
     ].map(async (filename) => ({
