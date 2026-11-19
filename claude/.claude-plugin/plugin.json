@@ -5,9 +5,13 @@
   "description": "Create and send an AI-illustrated postcard anywhere in the world",
   "author": {
     "name": "Paper Plane Post, Inc.",
+    "email": "office@paperplanepost.com",
     "url": "https://paperplanepost.com"
   },
   "homepage": "https://paperplanepost.com",
+  "repository": "https://github.com/paperplanepost/agents",
   "license": "MIT",
+  "icon": ".claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://paperplanepost.com/privacy",
   "keywords": ["postcard", "photo", "mail"]
 }
