@@ -14,7 +14,7 @@ From the repository root, with Bun and `zip` installed:
 bun chatgpt/docs/package.ts
 ```
 
-The builder checks the manifest, icon, endpoint, and declared review cases. It writes `dist/chatgpt-plugin/paper-plane-post-1.0.0-draft.zip` and prints a source digest. It includes only those four package files.
+The builder checks the manifest, icon, endpoint, and declared review cases. It writes `dist/chatgpt-plugin/paper-plane-post-<version>-draft.zip` and prints a source digest. It includes only those four package files.
 
 A draft ZIP is not an approved directory listing. OpenAI's dashboard validation, developer verification, and review remain separate. The published portable MCP schema rejects server extensions, while OpenAI documents `extensions.com.openai.auth`; retain that declaration and verify it in the portal.
 
