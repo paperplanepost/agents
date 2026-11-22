@@ -76,7 +76,7 @@ def main():
         "jsonrpc": "2.0",
         "id": 1,
         "method": "tools/call",
-        "params": {"name": "start_postcard", "arguments": arguments},
+        "params": {"name": "send_postcard", "arguments": arguments},
     }
     request = Request(
         url,

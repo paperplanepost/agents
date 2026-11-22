@@ -45,8 +45,8 @@ const files = [
       "README.md",
       "LICENSE",
       "commands/postcard.md",
-      "skills/start-postcard/SKILL.md",
-      "skills/start-postcard/scripts/start_postcard.py",
+      "skills/send-postcard/SKILL.md",
+      "skills/send-postcard/scripts/send_postcard.py",
     ].map(async (filename) => ({
       bytes: await readFile(path.resolve(pluginRoot, filename)),
       filename,
