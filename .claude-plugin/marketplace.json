@@ -1,0 +1,17 @@
+{
+  "name": "paper-plane-post",
+  "owner": {
+    "name": "Paper Plane Post, Inc.",
+    "email": "office@paperplanepost.com"
+  },
+  "metadata": {
+    "description": "Paper Plane Post plugins for Claude"
+  },
+  "plugins": [
+    {
+      "name": "paper-plane-post",
+      "source": "./claude",
+      "description": "Create and send an AI-illustrated postcard anywhere in the world"
+    }
+  ]
+}

@@ -10,6 +10,11 @@ import sys
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+NETWORK_BLOCKED = (
+    "Network blocked: code execution can't reach api.paperplanepost.com. "
+    "Allow that domain for code execution in Claude's settings, or use a public image URL or the website"
+)
+
 
 def json_object(value):
     try:
@@ -88,8 +93,12 @@ def main():
             message = response_message(response.read().decode(), response.headers.get("Content-Type", ""))
     except HTTPError as error:
         # Never print an HTTP response body: a gateway could echo the uploaded request.
+        if error.code in {403, 407} and not error.headers.get("cf-ray"):
+            raise ValueError(f"{NETWORK_BLOCKED} (HTTP {error.code})") from error
         raise ValueError(f"MCP request failed: HTTP {error.code} {error.reason}") from error
     except URLError as error:
+        if "tunnel connection failed" in str(error.reason).lower() or "403" in str(error.reason):
+            raise ValueError(f"{NETWORK_BLOCKED} ({error.reason})") from error
         raise ValueError(f"MCP connection failed: {error.reason}") from error
     if message.get("error"):
         error = message["error"]
