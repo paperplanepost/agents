@@ -21,11 +21,11 @@ Then ask Claude to turn a photo into a postcard, or run `/paper-plane-post:postc
 From the repository root, with Bun and `zip` installed:
 
 ```sh
-bun claude/docs/package.ts
+bun tools/claude-package.ts
 claude plugin validate claude --strict
 ```
 
-The builder writes `dist/claude-plugin/paper-plane-post-1.0.0.zip` and prints its source digest. It includes only the manifest, icon, MCP configuration, this README, the license, the command, the skill, and its Python helper. Packaging tools, environment files, and test evidence stay outside the archive.
+The builder writes `dist/claude-plugin/paper-plane-post-<version>.zip` and prints its source digest. It includes only the manifest, icon, MCP configuration, this README, the license, the command, the skill, and its Python helper. Packaging tools, environment files, and test evidence stay outside the archive.
 
 In a Claude client that supports private plugin uploads, open **Customize > Plugins > Add > Upload plugin** and choose the ZIP. Connect Paper Plane Post without authentication. Client menus and upload availability can differ. Keep one installation for the endpoint. A valid archive doesn't establish live-client compatibility or directory approval.
 

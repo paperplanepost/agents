@@ -3,14 +3,14 @@ import { mkdir, readFile, rm, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { parseArgs } from "node:util"
 
-import sourceManifest from "../.claude-plugin/plugin.json"
-import sourceMCP from "../.mcp.json"
+import sourceManifest from "../claude/.claude-plugin/plugin.json"
+import sourceMCP from "../claude/.mcp.json"
 
 const { values } = parseArgs({
   options: { dev: { default: false, type: "boolean" } },
   strict: true,
 })
-const pluginRoot = path.resolve(import.meta.dir, "..")
+const pluginRoot = path.resolve(import.meta.dir, "../claude")
 const root = process.cwd()
 const output = path.resolve(root, "dist/claude-plugin")
 const name = values.dev ? "paper-plane-post-dev" : sourceManifest.name

@@ -32,14 +32,14 @@ Use actual file bytes, never base64 invented from an image. Missing note or addr
 ## Packages
 
 - [ChatGPT and Codex](chatgpt/): plugin manifest, MCP configuration, icon, and packaging helper.
-- [Claude](claude/): plugin manifest, icon, MCP configuration, postcard skill and command, file-upload helper, and packaging helper. [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) makes this repository a Claude Code marketplace: `/plugin install paper-plane-post --marketplace paperplanepost/agents`.
+- [Claude](claude/): plugin manifest, icon, MCP configuration, postcard skill and command, file-upload helper. The packaging helper is [`tools/claude-package.ts`](tools/claude-package.ts), outside the plugin folder so the directory only sees plugin files. [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) makes this repository a Claude Code marketplace: `/plugin install paper-plane-post --marketplace paperplanepost/agents`.
 - [`server.json`](server.json): official MCP Registry metadata for `com.paperplanepost/office`.
 
 These are distribution sources. A package archive or registry listing does not imply approval in an AI app's directory. Build with [Bun](https://bun.sh/) and the system `zip` command. From this repository's root:
 
 ```sh
 bun chatgpt/docs/package.ts
-bun claude/docs/package.ts
+bun tools/claude-package.ts
 ```
 
 Archives are written under `dist/` in the working directory. The builders use explicit file allowlists; environment files and review evidence aren't packaged.
