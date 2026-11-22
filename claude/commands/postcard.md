@@ -3,7 +3,7 @@ description: Turn a photo into a printed postcard draft you finish and pay for o
 argument-hint: "[photo URL, note, or recipient]"
 ---
 
-Start a Paper Plane Post postcard with the `start-postcard` skill.
+Make a Paper Plane Post postcard with the `send-postcard` skill.
 
 Use the photo the person attached in this conversation, or a public HTTPS image URL in: $ARGUMENTS
 
