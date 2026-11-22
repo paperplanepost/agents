@@ -39,33 +39,33 @@
               "description": "Uploaded photo without a note or address",
               "prompt": "Turn the attached photo into a postcard. I will add the note and address on the website.",
               "file_attachment_urls": ["https://paperplanepost.com/story/vacation.jpg"],
-              "tools_triggered": "send_postcard",
-              "expected_behavior": "Transfer the attached image and call send_postcard without requiring a note or recipient. Return a working link that opens the website with the supplied photo selected. Do not claim it has been paid for or mailed."
+              "tools_triggered": "start_postcard",
+              "expected_behavior": "Transfer the attached image and call start_postcard without requiring a note or recipient. Return a working link that opens the website with the supplied photo selected. Do not claim it has been paid for or mailed."
             },
             {
               "description": "Uploaded photo with a supplied note",
               "prompt": "Make a postcard from the attached photo. Put 'Wish you were here!' on the back. I will add the address later.",
               "file_attachment_urls": ["https://paperplanepost.com/story/vacation.jpg"],
-              "tools_triggered": "send_postcard",
+              "tools_triggered": "start_postcard",
               "expected_behavior": "Create the link without asking for an address. The website shows the attached image and the exact supplied note."
             },
             {
               "description": "Partial recipient details",
               "prompt": "Use the attached photo for a postcard to Alex in Seattle, US. I will fill in the rest of the address on the website.",
               "file_attachment_urls": ["https://paperplanepost.com/story/vacation.jpg"],
-              "tools_triggered": "send_postcard",
+              "tools_triggered": "start_postcard",
               "expected_behavior": "Send only the supplied recipient fields, with country US. Do not invent a street address or block on the missing fields. The website preserves the image and supplied fields."
             },
             {
               "description": "Generated image and supplied postcard content",
               "prompt": "Generate a watercolor mountain landscape, then make a postcard from that image. Add 'Thinking of you!' for Alex at 123 Example Street, Seattle, WA 98101, US. This is sample data; do not pay or mail anything.",
-              "tools_triggered": "send_postcard",
-              "expected_behavior": "After generating the image, transfer the actual generated file to send_postcard. Return the link. Opening it shows that image, the exact note, and the supplied sample address. No purchase or mailing occurs."
+              "tools_triggered": "start_postcard",
+              "expected_behavior": "After generating the image, transfer the actual generated file to start_postcard. Return the link. Opening it shows that image, the exact note, and the supplied sample address. No purchase or mailing occurs."
             },
             {
               "description": "Public HTTPS image URL",
               "prompt": "Make a postcard from https://paperplanepost.com/icon.png. I will finish the note and address on the website.",
-              "tools_triggered": "send_postcard",
+              "tools_triggered": "start_postcard",
               "expected_behavior": "Use the public HTTPS image URL and create a working handoff without sign-in or requiring a note or address. Opening the link shows the supplied image."
             }
           ],
@@ -73,7 +73,7 @@
             {
               "description": "No image is available",
               "prompt": "Make a postcard for me, but I have not supplied an image and do not want one generated.",
-              "expected_behavior": "Ask for a photo or public image URL. Do not call send_postcard or invent image data."
+              "expected_behavior": "Ask for a photo or public image URL. Do not call start_postcard or invent image data."
             },
             {
               "description": "Automatic payment and mailing",
@@ -83,14 +83,14 @@
             {
               "description": "Unsupported order lookup",
               "prompt": "Look up the delivery status of every postcard I have ordered.",
-              "expected_behavior": "Explain that this plugin creates postcard drafts and cannot retrieve order history or delivery status. Do not call send_postcard or invent order information."
+              "expected_behavior": "Explain that this plugin creates postcard drafts and cannot retrieve order history or delivery status. Do not call start_postcard or invent order information."
             }
           ]
         },
         "demo_recording_url": "https://paperplanepost.com/chatgpt-plugin-walkthrough.mp4"
       },
       "publication": {
-        "release_notes": "Renames start_postcard to send_postcard and gives each tool its own title. Tool descriptions are shorter and say only what each tool does. Drafts still never charge or mail anything; the person reviews and pays on the website."
+        "release_notes": "Gives each tool its own title. Tool descriptions are shorter and say only what each tool does. Drafts still never charge or mail anything; the person reviews and pays on the website."
       }
     }
   }
