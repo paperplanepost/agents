@@ -1,7 +1,7 @@
 {
   "name": "paper-plane-post",
   "displayName": "Paper Plane Post",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Create and send an AI-illustrated postcard anywhere in the world",
   "author": {
     "name": "Paper Plane Post, Inc.",
@@ -13,5 +13,8 @@
   "license": "MIT",
   "icon": ".claude-plugin/icon.png",
   "privacyPolicyUrl": "https://paperplanepost.com/privacy",
+  "documentationUrl": "https://paperplanepost.com/for/agents",
+  "supportUrl": "https://paperplanepost.com/support",
+  "termsOfServiceUrl": "https://paperplanepost.com/terms",
   "keywords": ["postcard", "photo", "mail"]
 }
