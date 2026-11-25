@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "paper-plane-post",
   "version": "1.0.0",
-  "description": "Create and send an AI-illustrated postcard anywhere in the world",
+  "description": "Send postcards and letters anywhere in the world",
   "author": {
     "name": "Paper Plane Post, Inc.",
     "email": "office@paperplanepost.com",

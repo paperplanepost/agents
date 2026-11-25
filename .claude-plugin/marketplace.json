@@ -11,7 +11,7 @@
     {
       "name": "paper-plane-post",
       "source": "./claude",
-      "description": "Create and send an AI-illustrated postcard anywhere in the world"
+      "description": "Send postcards and letters anywhere in the world"
     }
   ]
 }

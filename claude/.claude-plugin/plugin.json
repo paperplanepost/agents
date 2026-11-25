@@ -1,8 +1,8 @@
 {
   "name": "paper-plane-post",
   "displayName": "Paper Plane Post",
-  "version": "1.2.2",
-  "description": "Create and send an AI-illustrated postcard anywhere in the world",
+  "version": "1.3.0",
+  "description": "Send postcards and letters anywhere in the world",
   "author": {
     "name": "Paper Plane Post, Inc.",
     "email": "office@paperplanepost.com",
@@ -16,5 +16,11 @@
   "documentationUrl": "https://paperplanepost.com/for/agents",
   "supportUrl": "https://paperplanepost.com/support",
   "termsOfServiceUrl": "https://paperplanepost.com/terms",
-  "keywords": ["postcard", "photo", "mail"]
+  "keywords": [
+    "postcard",
+    "letter",
+    "certified mail",
+    "photo",
+    "mail"
+  ]
 }

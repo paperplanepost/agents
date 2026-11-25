@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.paperplanepost/office",
-  "description": "Create and send an AI-illustrated postcard anywhere in the world",
+  "description": "Send postcards and letters anywhere in the world",
   "title": "Paper Plane Post",
   "version": "1.0.0",
   "websiteUrl": "https://paperplanepost.com/for/agents",
