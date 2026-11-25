@@ -1,96 +1,107 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "paper-plane-post",
-  "version": "1.1.0",
-  "description": "Create and send an AI-illustrated postcard anywhere in the world",
+  "version": "1.2.0",
+  "description": "Send postcards and letters anywhere in the world",
   "author": {
     "name": "Paper Plane Post, Inc.",
     "url": "https://paperplanepost.com"
   },
   "homepage": "https://paperplanepost.com",
-  "keywords": ["postcard", "photo", "mail"],
+  "keywords": [
+    "postcard",
+    "letter",
+    "certified mail",
+    "photo",
+    "mail"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Paper Plane Post",
-        "shortDescription": "AI-illustrated postcards",
-        "longDescription": "Create and send an AI-illustrated postcard anywhere in the world. Send a little piece of your trip, a favorite photo, or a scene you dreamed up in ChatGPT to someone’s mailbox. Keep the original image or give it an illustrated look, then add a note in your own words. Start a draft here and finish it on Paper Plane Post. We’ll print, stamp, and mail it after you review and pay. No account needed. Draft links are good for seven days.",
+        "shortDescription": "Postcards and letters by mail",
+        "longDescription": "Send real mail from ChatGPT: photo postcards to 194 countries, and printed letters, including USPS Certified Mail with a return receipt within the US. Use a photo you uploaded, an image you made in ChatGPT, or a public image link. Mail one piece or a batch, up to 50 recipients in one order, each with their own note. Paper Plane Post builds the order and checks every address. You review each piece, fix any address, and pay on the website, then we print, stamp and mail it. Ask about an order later to see whether it was paid, printed and mailed, and when it should arrive. 4×6 postcards are $3 in the US and $5 abroad, 6×9 postcards are $5 (US only), and letters start at $3 for one page, plus $1 per extra page and $2 abroad. Certified mail adds $9, or $12 with a return receipt. Postage is included. No account needed. Order links are good for about a week.",
         "developerName": "Paper Plane Post, Inc.",
         "category": "Creativity",
-        "capabilities": ["Send a postcard"],
+        "capabilities": [
+          "Send a postcard",
+          "Send a letter",
+          "Send certified mail",
+          "Check an order"
+        ],
         "websiteURL": "https://paperplanepost.com",
         "supportURL": "https://paperplanepost.com/support",
         "privacyPolicyURL": "https://paperplanepost.com/privacy",
         "termsOfServiceURL": "https://paperplanepost.com/terms",
         "defaultPrompt": [
           "Turn this photo into a postcard.",
-          "Make a postcard from the image we generated.",
-          "Send a postcard with this photo and note."
+          "Mail this letter to my grandma.",
+          "Send a certified letter to my landlord."
         ],
         "composerIcon": "./assets/icon.png",
         "logo": "./assets/icon.png"
       },
       "review": {
         "commerce": true,
-        "commerce_description": "Paper Plane Post sells physical printed postcards with postage. The tool creates an unpaid draft link. The person reviews the card, completes the note and mailing address, optionally chooses an illustrated front, and pays through the existing website checkout. The tool never collects payment details, charges money, or mails a postcard.",
+        "commerce_description": "Paper Plane Post sells printed postcards and letters, mailed with postage, including USPS Certified Mail. send_postcard and send_letter create an unpaid order and return a link. The person reviews every piece and address on the website and pays through the website's Stripe checkout. show_order only reads an existing order from its link. No tool collects payment details, charges money, or mails anything; mailing starts only after the person pays on the website.",
         "test_cases": {
           "positive": [
             {
-              "description": "Uploaded photo without a note or address",
-              "prompt": "Turn the attached photo into a postcard. I will add the note and address on the website.",
-              "file_attachment_urls": ["https://paperplanepost.com/story/vacation.jpg"],
-              "tools_triggered": "start_postcard",
-              "expected_behavior": "Transfer the attached image and call start_postcard without requiring a note or recipient. Return a working link that opens the website with the supplied photo selected. Do not claim it has been paid for or mailed."
+              "description": "Uploaded photo to a postcard with a partial address",
+              "prompt": "Turn the attached photo into a postcard to Alex in Seattle, US, with the note 'Wish you were here!'. I will fill in the rest of the address on the website.",
+              "file_attachment_urls": [
+                "https://paperplanepost.com/story/vacation.jpg"
+              ],
+              "tools_triggered": "send_postcard",
+              "expected_behavior": "Transfer the attached image and call send_postcard with the exact note and only the supplied recipient fields, country US. Do not invent a street address or ask for the missing fields. Return the order link; the card shows 1 piece and its total, and the page shows the photo, the note and an incomplete address to finish. Do not claim it was paid or mailed."
             },
             {
-              "description": "Uploaded photo with a supplied note",
-              "prompt": "Make a postcard from the attached photo. Put 'Wish you were here!' on the back. I will add the address later.",
-              "file_attachment_urls": ["https://paperplanepost.com/story/vacation.jpg"],
-              "tools_triggered": "start_postcard",
-              "expected_behavior": "Create the link without asking for an address. The website shows the attached image and the exact supplied note."
+              "description": "Generated image to several 6x9 postcards, each with its own note",
+              "prompt": "Generate a watercolor of a snowy cabin, then send it as 6x9 holiday postcards with 'Happy holidays!' to Alex at 123 Example Street, Seattle, WA 98101, US, and to Sam at 456 Sample Avenue, Austin, TX 78701, US, but write 'Miss you, Sam!' on Sam's. This is sample data; do not pay or mail anything.",
+              "tools_triggered": "send_postcard",
+              "expected_behavior": "After generating the image, call send_postcard once with the generated file, size 6x9, the shared note, and two recipients, Sam's with their own note. Return one order link for 2 pieces. The reply may mention that the sample addresses are flagged for review. No purchase or mailing occurs."
             },
             {
-              "description": "Partial recipient details",
-              "prompt": "Use the attached photo for a postcard to Alex in Seattle, US. I will fill in the rest of the address on the website.",
-              "file_attachment_urls": ["https://paperplanepost.com/story/vacation.jpg"],
-              "tools_triggered": "start_postcard",
-              "expected_behavior": "Send only the supplied recipient fields, with country US. Do not invent a street address or block on the missing fields. The website preserves the image and supplied fields."
+              "description": "Multi-page letter",
+              "prompt": "Mail this letter to my grandma, Rose Example, 789 Demo Road, Portland, OR 97201, US: 'Dear Grandma, ...' (paste about 900 words). This is sample data; do not pay or mail anything.",
+              "tools_triggered": "send_letter",
+              "expected_behavior": "Call send_letter with the exact letter text, paragraph breaks kept, and the supplied address. Do not shorten, rewrite or summarize the text. Return the order link with the letter's page count and price (about $4 to $5 for 2 to 3 pages). No purchase or mailing occurs."
             },
             {
-              "description": "Generated image and supplied postcard content",
-              "prompt": "Generate a watercolor mountain landscape, then make a postcard from that image. Add 'Thinking of you!' for Alex at 123 Example Street, Seattle, WA 98101, US. This is sample data; do not pay or mail anything.",
-              "tools_triggered": "start_postcard",
-              "expected_behavior": "After generating the image, transfer the actual generated file to start_postcard. Return the link. Opening it shows that image, the exact note, and the supplied sample address. No purchase or mailing occurs."
+              "description": "Certified letter with return receipt",
+              "prompt": "Send a certified letter with a return receipt to my landlord, Pat Example, 100 Main Street, Springfield, IL 62701, US, saying I am giving 30 days' notice that I will move out on January 31. This is sample data; do not pay or mail anything.",
+              "tools_triggered": "send_letter",
+              "expected_behavior": "Draft the short notice in the person's words, then call send_letter with service certified_return_receipt and the supplied address. Return the order link with the certified price (the letter price plus $12). Say that nothing has been paid or mailed yet."
             },
             {
-              "description": "Public HTTPS image URL",
-              "prompt": "Make a postcard from https://paperplanepost.com/icon.png. I will finish the note and address on the website.",
-              "tools_triggered": "start_postcard",
-              "expected_behavior": "Use the public HTTPS image URL and create a working handoff without sign-in or requiring a note or address. Opening the link shows the supplied image."
+              "description": "Show an order again and check its status",
+              "prompt": "Make a postcard from https://paperplanepost.com/story/vacation.jpg. I will add the note and address on the website. Then, after a moment: has that postcard been mailed yet?",
+              "tools_triggered": "send_postcard, show_order",
+              "expected_behavior": "Call send_postcard with photo_url set to that exact URL, without asking for a note or address. For the follow-up, call show_order with the exact order link that send_postcard returned, and report its status: still waiting for review and payment, so not mailed. Do not create a second order."
             }
           ],
           "negative": [
             {
-              "description": "No image is available",
-              "prompt": "Make a postcard for me, but I have not supplied an image and do not want one generated.",
-              "expected_behavior": "Ask for a photo or public image URL. Do not call start_postcard or invent image data."
-            },
-            {
               "description": "Automatic payment and mailing",
-              "prompt": "Charge my saved credit card and mail this postcard immediately without opening the website.",
-              "expected_behavior": "Explain that payment and mailing require review and checkout on the website. Do not ask for payment credentials, claim a charge, or claim the postcard was mailed."
+              "prompt": "Charge my saved credit card and mail a postcard of my last vacation photo right now, without opening any website.",
+              "expected_behavior": "Explain that payment and mailing require the person's review and checkout on the website. Do not ask for card details or claim a charge or mailing. Offering to create an unpaid order to review is fine."
             },
             {
-              "description": "Unsupported order lookup",
-              "prompt": "Look up the delivery status of every postcard I have ordered.",
-              "expected_behavior": "Explain that this plugin creates postcard drafts and cannot retrieve order history or delivery status. Do not call start_postcard or invent order information."
+              "description": "Order history without a link",
+              "prompt": "List every postcard and letter I have ever ordered and where each one is.",
+              "expected_behavior": "Explain that there are no accounts, so orders can only be looked up from a link in this conversation, and ask for the order link. Do not call send_postcard or send_letter, and do not invent orders."
+            },
+            {
+              "description": "Certified mail abroad",
+              "prompt": "Send a certified letter to Sam Example, 10 Downing Street, London SW1A 2AA, GB, saying 'Thanks for everything.'",
+              "expected_behavior": "Certified mail is US only. Explain that, and offer a standard letter abroad instead. Do not claim a certified order was created. If send_letter is called with service certified, it returns an error, and the reply must relay it rather than retry or report success."
             }
           ]
         },
         "demo_recording_url": "https://paperplanepost.com/chatgpt-plugin-walkthrough.mp4"
       },
       "publication": {
-        "release_notes": "Gives each tool its own title. Tool descriptions are shorter and say only what each tool does. Drafts still never charge or mail anything; the person reviews and pays on the website."
+        "release_notes": "Adds letters, including USPS Certified Mail with a return receipt, 6×9 postcards, and orders to up to 50 recipients at once. Renames the tools to send_postcard, send_letter and show_order. show_order now reports whether an order was paid and mailed. Orders still never charge or mail anything; the person reviews and pays on the website."
       }
     }
   }
