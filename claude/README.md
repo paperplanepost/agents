@@ -1,10 +1,10 @@
 # Paper Plane Post for Claude
 
-Create and send an AI-illustrated postcard anywhere in the world.
+Send postcards and letters anywhere in the world.
 
-Turn a supplied photo into an unpaid postcard draft from Claude. Open **Finish your postcard** to review the image, complete the note and mailing address, and pay on Paper Plane Post. Creating a draft never charges you or mails a postcard, and you don't need a Paper Plane Post account.
+Ask Claude to mail a photo postcard, a letter from your text or a public PDF, or a USPS Certified letter with a return receipt, to one person or up to 50. Claude creates an unpaid order; open **Review and pay** to check every piece and address and pay on Paper Plane Post. Creating an order never charges you or mails anything, and you don't need a Paper Plane Post account.
 
-This package contains the Claude manifest, a remote MCP connection, a postcard skill, and a `/paper-plane-post:postcard` command. The server exposes `create_mail_order` to create an unpaid order and read-only `get_mail_order` to display an existing order's link and inline button. The production endpoint is `https://api.paperplanepost.com/v1/mcp`, with no authentication.
+This package contains the Claude manifest, a remote MCP connection, a mail skill, and a `/paper-plane-post:postcard` command. The server exposes `create_mail_order` to create an unpaid order and read-only `get_mail_order` to display an existing order's link and inline button. The production endpoint is `https://api.paperplanepost.com/v1/mcp`, with no authentication.
 
 ## Install
 
@@ -14,7 +14,7 @@ In Claude Code:
 /plugin install paper-plane-post --marketplace paperplanepost/agents
 ```
 
-Then ask Claude to turn a photo into a postcard, or run `/paper-plane-post:postcard` with a photo attached or a public image URL.
+Then ask Claude to mail a postcard or a letter, or run `/paper-plane-post:postcard` with a photo attached or a public image URL.
 
 ## Build and upload
 
