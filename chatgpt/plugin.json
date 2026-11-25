@@ -20,7 +20,7 @@
       "interface": {
         "displayName": "Paper Plane Post",
         "shortDescription": "Postcards and letters by mail",
-        "longDescription": "Send real mail from ChatGPT: photo postcards to 194 countries, and printed letters from your text or a PDF, including USPS Certified Mail with a return receipt within the US. Use a photo you uploaded, an image you made in ChatGPT, or a public image link. Mail one piece or a batch of up to 50 in one order, each to its own recipient with its own note. Paper Plane Post builds the order and checks every address. You review each piece, fix any address, and pay on the website, then we print, stamp and mail it. Ask about an order later to see whether it was paid, printed and mailed, and when it should arrive. 4×6 postcards are $3 in the US and $5 abroad, 6×9 postcards are $5 (US only), and letters start at $3 for one page in black and white, plus $1 per extra page, $3 for colour and $2 abroad. Certified mail adds $9, or $12 with a return receipt. Postage is included. No account needed. Order links are good for about a week.",
+        "longDescription": "Send real mail from ChatGPT: photo postcards to 194 countries, and printed letters from your text or a PDF, including USPS Certified Mail with a return receipt within the US. Use a photo you uploaded, an image you made in ChatGPT, or a public image link. Mail one piece or a batch of up to 50 in one order, each to its own recipient with its own note. Paper Plane Post builds the order and checks every address. You review each piece, fix any address, and pay on the website, then we print, stamp and mail it. Ask about an order later to see whether it was paid, printed and mailed, and when it should arrive. No account needed. Order links are good for about a week.",
         "developerName": "Paper Plane Post, Inc.",
         "category": "Creativity",
         "capabilities": [
@@ -43,7 +43,7 @@
       },
       "review": {
         "commerce": true,
-        "commerce_description": "Paper Plane Post sells printed postcards and letters, mailed with postage, including USPS Certified Mail. create_mail_order creates an unpaid order and returns a link. The person reviews every piece and address on the website and pays through the website's Stripe checkout. get_mail_order only reads an existing order from its link. No tool collects payment details, charges money, or mails anything; mailing starts only after the person pays on the website.",
+        "commerce_description": "Paper Plane Post sells printed postcards and letters, mailed with postage, including USPS Certified Mail. create_mail_order creates an unpaid order and returns a link. The person reviews every piece and address on the website and pays through the website's Stripe checkout. get_mail_order only reads an existing order from its link. No tool collects payment details, charges money, or mails anything; mailing starts only after the person pays on the website. Prices: 4×6 postcards are $3 in the US and $5 abroad, 6×9 postcards are $5 (US only), and letters start at $3 for one page in black and white, plus $1 per extra page, $3 for colour and $2 abroad. Certified mail adds $9, or $12 with a return receipt. Postage is included.",
         "test_cases": {
           "positive": [
             {
