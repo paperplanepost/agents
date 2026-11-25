@@ -1,10 +1,16 @@
 # Paper Plane Post for ChatGPT and Codex
 
-Create and send an AI-illustrated postcard anywhere in the world.
+Send postcards and letters anywhere in the world.
 
-Start an unpaid postcard from an uploaded photo, a generated image, or a public HTTPS image URL. The inline **Finish your postcard** button opens Paper Plane Post for review, the remaining note and address fields, and payment. No Paper Plane Post account is required, and the tool never charges or mails anything.
+Three tools on one MCP server:
 
-This package contains `plugin.json`, `mcp.json`, `assets/icon.png`, and `LICENSE`. It points only to the production MCP endpoint at `https://api.paperplanepost.com/v1/mcp` with no authentication. Missing optional notes or address fields never block draft creation.
+- `send_postcard` makes an unpaid order of photo postcards (4×6 to 194 countries, 6×9 within the US) from an uploaded photo, a generated image, or a public HTTPS image URL, for one recipient or up to 50, each with an optional note.
+- `send_letter` makes an unpaid order of printed letters from text, optionally with a photo, and within the US as USPS Certified Mail with or without a return receipt.
+- `show_order` reads an existing order from its link: its pieces, total, and whether it was paid and mailed. It creates nothing.
+
+The inline card's **Review and pay** button opens Paper Plane Post, where the person checks every piece and address and pays. No Paper Plane Post account is required, and no tool ever charges or mails anything.
+
+This package contains `plugin.json`, `mcp.json`, `assets/icon.png`, and `LICENSE`. It points only to the production MCP endpoint at `https://api.paperplanepost.com/v1/mcp` with no authentication. Missing notes or address fields never block an order.
 
 ## Build
 
