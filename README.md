@@ -25,7 +25,7 @@ No account, API key, or authentication header is required. The root [`plugin.jso
 }
 ```
 
-`send_postcard` accepts one photo source: a public HTTPS `photo_url`, actual file bytes encoded as `photo_base64`, or the host's supported file input. Include a `note` and any known `recipient` fields, or leave them for the website. `show_postcard` displays the handoff for an existing draft URL without creating another draft. Tool calls never charge money or mail a postcard. Draft links expire after seven days.
+`create_postcard` accepts one photo source: a public HTTPS `photo_url`, actual file bytes encoded as `photo_base64`, or the host's supported file input. Include a `note` and any known `recipient` fields, or leave them for the website. `get_order` displays the handoff for an existing draft URL without creating another draft. Tool calls never charge money or mail a postcard. Draft links expire after seven days.
 
 Use actual file bytes, never base64 invented from an image. Missing note or address fields don't block a draft. The website handles review, payment, and mailing; order lookup is unavailable through this server.
 
