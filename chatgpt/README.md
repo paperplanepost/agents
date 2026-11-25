@@ -2,11 +2,10 @@
 
 Send postcards and letters anywhere in the world.
 
-Three tools on one MCP server:
+Two tools on one MCP server:
 
-- `create_postcard` makes an unpaid order of photo postcards (4×6 to 194 countries, 6×9 within the US) from an uploaded photo, a generated image, or a public HTTPS image URL, for one recipient or up to 50, each with an optional note.
-- `create_letter` makes an unpaid order of printed letters from text, optionally with a photo, and within the US as USPS Certified Mail with or without a return receipt.
-- `get_order` reads an existing order from its link: its pieces, total, and whether it was paid and mailed. It creates nothing.
+- `create_mail_order` makes an unpaid order of up to 50 pieces, each to one recipient: photo postcards (4×6 to 194 countries, 6×9 within the US) from an uploaded photo, a generated image, or a public HTTPS image URL, each with an optional note; and letters from text or a PDF, in black and white or colour, and within the US as USPS Certified Mail with or without a return receipt. Uploaded files go in the top-level `files` array, and each item points to one by index.
+- `get_mail_order` reads an existing order from its link: its pieces, total, and whether it was paid and mailed. It creates nothing.
 
 The inline card's **Review and pay** button opens Paper Plane Post, where the person checks every piece and address and pays. No Paper Plane Post account is required, and no tool ever charges or mails anything.
 

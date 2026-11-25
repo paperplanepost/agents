@@ -25,7 +25,7 @@ No account, API key, or authentication header is required. The root [`plugin.jso
 }
 ```
 
-`create_postcard` accepts one photo source: a public HTTPS `photo_url`, actual file bytes encoded as `photo_base64`, or the host's supported file input. Include a `note` and any known `recipient` fields, or leave them for the website. `get_order` displays the handoff for an existing draft URL without creating another draft. Tool calls never charge money or mail a postcard. Draft links expire after seven days.
+`create_mail_order` takes `items`, each a postcard or a letter to one recipient. A postcard takes one photo source: a public HTTPS `photo_url`, actual file bytes encoded as `photo_base64`, or `photo_file`, the index of a file the host passed in `files`. A letter takes `content` text or a PDF (`pdf_url`, `pdf_base64` or `pdf_file`; US Letter, up to 11 pages). Include a `note` and any known `recipient` fields, or leave them for the website. `get_mail_order` shows an existing order from its link without creating another. Tool calls never charge money or mail anything. Order links expire after seven days.
 
 Use actual file bytes, never base64 invented from an image. Missing note or address fields don't block a draft. The website handles review, payment, and mailing; order lookup is unavailable through this server.
 

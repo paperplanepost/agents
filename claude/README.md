@@ -4,7 +4,7 @@ Create and send an AI-illustrated postcard anywhere in the world.
 
 Turn a supplied photo into an unpaid postcard draft from Claude. Open **Finish your postcard** to review the image, complete the note and mailing address, and pay on Paper Plane Post. Creating a draft never charges you or mails a postcard, and you don't need a Paper Plane Post account.
 
-This package contains the Claude manifest, a remote MCP connection, a postcard skill, and a `/paper-plane-post:postcard` command. The server exposes `create_postcard` to create an unpaid draft and read-only `get_order` to display its existing link and inline button. The production endpoint is `https://api.paperplanepost.com/v1/mcp`, with no authentication.
+This package contains the Claude manifest, a remote MCP connection, a postcard skill, and a `/paper-plane-post:postcard` command. The server exposes `create_mail_order` to create an unpaid order and read-only `get_mail_order` to display an existing order's link and inline button. The production endpoint is `https://api.paperplanepost.com/v1/mcp`, with no authentication.
 
 ## Install
 
